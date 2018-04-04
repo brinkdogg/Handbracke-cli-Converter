@@ -14,7 +14,7 @@
 #
 # 
 # (c) 2018, Edoardo Marchetti <marchetti.edoardo@gmail.com>
-# https://github.com/jas31085/Libra_310-Script-Collection
+# https://github.com/jas31085/Handbracke-cli-Converter
 #
 
 

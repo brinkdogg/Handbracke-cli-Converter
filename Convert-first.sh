@@ -7,8 +7,9 @@
 #
 # 	Convert /full/path/to/file.mkv
 # 
-#   10/2017 Edoardo Marchetti
-#
+#   (c) 2018, Edoardo Marchetti <marchetti.edoardo@gmail.com>
+#   https://github.com/jas31085/Handbracke-cli-Converter
+# 
 ############################################################
 
 

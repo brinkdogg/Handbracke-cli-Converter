@@ -1,0 +1,56 @@
+#!/bin/bash
+
+##########################################
+# 
+# Find and convert file from folder
+# 
+#  finding /folder/path *.m4v
+# 
+# (c) 2018, Edoardo Marchetti <marchetti.edoardo@gmail.com>
+# https://github.com/jas31085/Libra_310-Script-Collection
+#
+##########################################
+
+blockFile="/tmp/FindingConversion"
+LogFile="/var/log/FindingConversion"
+
+if [[ -e "/tmp/FindingConversion" ]]; then
+	echo " Script already running"
+	exit 1
+else
+	touch "$blockFile"	
+fi
+
+if [[ -e "/opt/Convert" ]]; then
+	Convert="/opt/Convert"
+else
+	echo " Script not Found in /opt/"
+	rm -rf "$blockFile"
+	exit 1
+fi
+
+if [[ -d "$1" ]]; then
+	Folder="$1"
+else
+	echo " Folder not exist"
+	rm -rf "$blockFile"
+	exit 1	
+fi
+
+
+TYPE="*.mkv"
+
+if [[ ! "$2" ]]; then
+	TYPE="$2"
+fi
+
+
+echo "Start Finding File  " $(date) >> $LogFile
+echo ""
+
+trova=$(find "$Folder" -name "$TYPE" -exec bash -x $Convert {} \;) >> $LogFile
+
+echo "Stop Finding File  " $(date)>> $LogFile
+echo "" >> $LogFile
+
+rm -rf "$blockFile"
