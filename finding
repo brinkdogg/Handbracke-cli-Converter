@@ -48,7 +48,7 @@ fi
 echo "Start Finding File  " $(date) >> $LogFile
 echo ""
 
-trova=$(find "$Folder" -name "$TYPE" -exec bash -x $Convert {} \;) >> $LogFile
+find "$Folder" -name "$TYPE" -exec bash -x $Convert {} \; 2>&1 >> $LogFile
 
 echo "Stop Finding File  " $(date)>> $LogFile
 echo "" >> $LogFile
