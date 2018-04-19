@@ -14,11 +14,10 @@
 blockFile="/tmp/FindingConversion"
 LogFile="/var/log/FindingConversion"
 
-if [[ -e "/tmp/FindingConversion" ]]; then
+
+if [[ ! -z "$(ps -ef | grep $0 | awk '{ print $2 }' )" ]]; then
 	echo " Script already running"
 	exit 1
-else
-	touch "$blockFile"	
 fi
 
 if [[ -e "/opt/Convert" ]]; then
