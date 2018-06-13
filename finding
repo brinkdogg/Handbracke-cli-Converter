@@ -11,7 +11,6 @@
 #
 ##########################################
 
-blockFile="/tmp/FindingConversion"
 LogFile="/var/log/FindingConversion"
 
 
@@ -24,7 +23,6 @@ if [[ -e "/opt/Convert" ]]; then
 	Convert="/opt/Convert"
 else
 	echo " Script not Found in /opt/"
-	rm -rf "$blockFile"
 	exit 1
 fi
 
@@ -32,7 +30,6 @@ if [[ -d "$1" ]]; then
 	Folder="$1"
 else
 	echo " Folder not exist"
-	rm -rf "$blockFile"
 	exit 1	
 fi
 
@@ -47,9 +44,7 @@ fi
 echo "Start Finding File  " $(date) >> $LogFile
 echo ""
 
-find "$Folder" -name "$TYPE" -exec bash -x $Convert {} \; 2>&1 >> $LogFile
+find "$Folder" -name "$TYPE" -exec bash -x $Convert {} \; &>> $LogFile
 
 echo "Stop Finding File  " $(date)>> $LogFile
 echo "" >> $LogFile
-
-rm -rf "$blockFile"
